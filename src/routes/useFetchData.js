@@ -4,6 +4,7 @@ import { useRef } from 'react';
 function useFetchData() {
   const API_URL = 'https://api.thecatapi.com/v1/images/search?limit=3&api_key=live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok';
   const isMountedRef = useRef(false);
+  const [refresh, setRefresh] = React.useState(false);
   const [data, setData] = React.useState([]);
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
@@ -26,12 +27,13 @@ function useFetchData() {
       }
     };
     fetchData();
-  }, []);
+  }, [refresh]);
 
   return {
     data,
     error,
     isLoaded,
+    setRefresh,
   };
 }
 
