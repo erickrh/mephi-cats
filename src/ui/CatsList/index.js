@@ -1,4 +1,5 @@
 import React from 'react';
+import './CatsList.css';
 
 function CatsList(props) {
   return (
@@ -11,6 +12,8 @@ function CatsList(props) {
 
           {(props.isLoaded && !props.error) && props.data.map(props.render)}
         </ul>
+        
+        {(props.isLoaded && !props.error && props.title === 'Favorite Cats') && props.onEmptyFavorites()}
       </section>
     </>
   );

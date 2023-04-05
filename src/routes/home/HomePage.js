@@ -1,5 +1,5 @@
 import React from 'react';
-import { RandomCats } from '../../ui/RandomCats';
+import { CatImage } from '../../ui/CatImage';
 import { useFetchCats } from '../useFetchCats';
 import { CatsList } from '../../ui/CatsList';
 import { RefreshButton } from '../../ui/RefreshButton';
@@ -35,7 +35,7 @@ function HomePage() {
         isLoaded={isLoaded}
         onError={ () => <Error error={errorRandom} />}
         render={cat => (
-          <RandomCats
+          <CatImage
             key={cat.id}
             url={cat.url}
           />
@@ -48,8 +48,9 @@ function HomePage() {
         error={errorFavorite}
         isLoaded={isLoadedFavorites}
         onError={ () => <Error error={errorFavorite} />}
+        onEmptyFavorites={() => <p>You have no favorite cats yet!</p>}
         render={cat => (
-          <RandomCats
+          <CatImage
             key={cat.id}
             url={cat.url}
           />

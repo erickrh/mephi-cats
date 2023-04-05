@@ -1,7 +1,7 @@
 import React from 'react';
-import './RandomCats.css';
+import './CatImage.css';
 
-function RandomCats(props) {
+function CatImage(props) {
   return (
     <li>
       <img src={props.url} alt="Cat photo" />
@@ -10,4 +10,4 @@ function RandomCats(props) {
   );
 }
 
-export { RandomCats };
+export { CatImage };

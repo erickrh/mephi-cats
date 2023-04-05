@@ -34,6 +34,7 @@ function useFetchCats() {
     fetchRandomCats();
   }, [refresh]);
 
+
   React.useEffect(() => {
     const fetchFavoriteCats = async () => {
       try {
@@ -47,8 +48,9 @@ function useFetchCats() {
       }
     };
     console.log(favorites);
+
     fetchFavoriteCats();
-  }, [favorites]);
+  }, []);
 
   const randomCatsStates = {
     data,
