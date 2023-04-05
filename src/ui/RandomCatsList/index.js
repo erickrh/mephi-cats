@@ -3,7 +3,7 @@ import React from 'react';
 function RandomCatsList(props) {
   return (
     <>
-      <h1>Random cats</h1>
+      <h2>Random cats</h2>
 
       <section id='randomCats'>
         <ul>

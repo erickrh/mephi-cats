@@ -3,8 +3,9 @@ import React from 'react';
 function FavoriteCats() {
   return (
     <>
-      <h1>Favorite cats</h1>
+      <h2>Favorite cats</h2>
       <section id='favoritesCats'>
+        
       </section>
     </>
   );
