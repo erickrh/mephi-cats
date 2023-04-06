@@ -14,7 +14,12 @@ img, .favoriteBtn, .deleteBtn {
   border: none;
 }
 
-.deleteBtn:active {
-  background-color: rgb(170, 0, 0)
-  ;
+#deleteBtn:active {
+  height: 1.5em;
+  background-color: rgba(255, 0, 0, 0.582);
+  font-weight: bold;
+}
+
+.deleteBtn:hover {
+  background-color: rgb(236, 54, 54);
 }

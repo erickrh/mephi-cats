@@ -11,7 +11,7 @@ function CatImage(props) {
       )}
 
       {!props.buttonFavorite && (
-        <button className='deleteBtn'>Delete favorite</button>
+        <button className='deleteBtn' id='deleteBtn'>Delete favorite</button>
       )}
     </li>
   );
