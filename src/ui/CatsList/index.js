@@ -12,8 +12,8 @@ function CatsList(props) {
 
           {(props.isLoaded && !props.error) && props.data.map(props.render)}
         </ul>
-        
-        {(props.isLoaded && !props.error && props.title === 'Favorite Cats') && props.onEmptyFavorites()}
+
+        {(props.isLoaded && !props.error && !props.data && props.title === 'Favorite Cats') && props.onEmptyFavorites()}
       </section>
     </>
   );

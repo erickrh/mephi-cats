@@ -7,7 +7,11 @@ import { Header } from '../../ui/Header';
 import { Error } from '../../ui/Error';
 
 function HomePage() {
-  const { randomCatsStates, favoriteCatsStates } = useFetchCats();
+  const {
+    randomCatsStates,
+    favoriteCatsStates,
+    saveFavoriteCat,
+  } = useFetchCats();
 
   const {
     data,
@@ -38,6 +42,8 @@ function HomePage() {
           <CatImage
             key={cat.id}
             url={cat.url}
+            buttonFavorite={true}
+            onFavorite={() => saveFavoriteCat(cat.id)}
           />
         )}
       />
@@ -52,7 +58,8 @@ function HomePage() {
         render={cat => (
           <CatImage
             key={cat.id}
-            url={cat.url}
+            url={cat.image.url}
+            buttonFavorite={false}
           />
         )}
       />

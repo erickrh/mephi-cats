@@ -5,6 +5,16 @@ li {
   margin: 20px;
 }
 
-img, .favoriteBtn {
+img, .favoriteBtn, .deleteBtn {
   width: 300px;
+}
+
+.deleteBtn {
+  background-color: red;
+  border: none;
+}
+
+.deleteBtn:active {
+  background-color: rgb(170, 0, 0)
+  ;
 }
