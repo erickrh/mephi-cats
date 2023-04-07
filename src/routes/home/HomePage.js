@@ -11,6 +11,7 @@ function HomePage() {
     randomCatsStates,
     favoriteCatsStates,
     saveFavoriteCat,
+    deleteFavoriteCat,
   } = useFetchCats();
 
   const {
@@ -60,6 +61,7 @@ function HomePage() {
             key={cat.id}
             url={cat.image.url}
             buttonFavorite={false}
+            onDelete={() => deleteFavoriteCat(cat.id)}
           />
         )}
       />
