@@ -56,8 +56,12 @@ function HomePage() {
         data={favorites}
         error={errorFavorite}
         isLoaded={isLoadedFavorites}
-        onError={ () => <Error error={errorFavorite} />}
+        onError={() => <Error error={errorFavorite} />}
         onEmptyFavorites={() => <p>You have no favorite cats yet!</p>}
+        onDeleteAllFavoriteCatsButton={() =>
+          <DeleteAllFavoriteCatsButton onDeleteAll={
+            () => deleteAllFavoriteCats()}
+          />}
         render={cat => (
           <CatImage
             key={cat.id}
@@ -67,7 +71,6 @@ function HomePage() {
           />
         )}
       />
-      <DeleteAllFavoriteCatsButton onDeleteAll={() => deleteAllFavoriteCats()} />
     </>
   );
 }

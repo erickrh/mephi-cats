@@ -121,7 +121,6 @@ function useDeleteAllFavoriteCats(
       const favorites = await response.json();
         
       for (const favorite of favorites) {
-        console.log(favorite.id);
         await fetch(API_URL_DELETE + favorite.id, {
           method: 'DELETE',
           headers: {
