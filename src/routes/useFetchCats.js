@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRef } from 'react';
+import { useMemo } from 'react';
 
 function useFetchRandomCats(API_URL_RANDOM) {
   const isMountedRef = useRef(false);
@@ -36,19 +37,24 @@ function useFetchRandomCats(API_URL_RANDOM) {
 }
 
 function useFetchFavoriteCats(API_URL_FAVORITE) {
+  const isMountedRef = useRef(false);
   const [favorites, setFavorites] = React.useState([]);
   const [errorFavorite, setErrorFavorite] = React.useState(null);
   const [refreshFavorites, setRefreshFavorites] = React.useState(false);
   const [isLoadedFavorites, setIsLoadedFavorites] = React.useState(false);
 
   React.useEffect(() => {
+    if (!isMountedRef.current) {
+      isMountedRef.current = true;
+      return;
+    }
+
     const fetchFavoriteCats = async () => {
       try {
         let req = await fetch(API_URL_FAVORITE);
         let res = await req.json();
         setIsLoadedFavorites(true);
         setFavorites(res);
-        console.log(res);
       } catch (error) {
         setIsLoadedFavorites(true);
         setErrorFavorite(error);
@@ -97,89 +103,50 @@ function useDeleteFavoriteCat(API_URL_DELETE, setRefreshFavorites) {
   return deleteFavoriteCat;
 }
 
-// const deleteAll = async () => {
-//   try {
-//     const response = await fetch('https://api.thecatapi.com/v1/favourites', {
-//       method: 'GET',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'x-api-key': 'live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok',
-//       }},
-//     );
-//     const favorites = await response.json();
-//     console.log(favorites);
-
-//     let counter = 0;
-//     const cleaningCats = setInterval(async () => {
-//       for (let i = 0; i <= 5; i++) {
-//         try {
-//           await fetch(`https://api.thecatapi.com/v1/favourites/${favorites[counter].id}`, {
-//             method: 'DELETE',
-//             headers: {
-//               'content-type':'application/json',
-//               'x-api-key': 'live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok'
-//             }
-//           });
-//           counter++;
-//         } catch {
-//           clearInterval(cleaningCats);
-//           console.log('Interval ends'); 
-//         }
-//       }
-//       console.log('Favorite cats list cleaned!');
-//     }, 5000);
-
-//   } catch (error) {
-//     console.log(`Error when deleting cats in favorites: ${error}`);
-//   }
-//   console.log('SE RENDERIZO');
-// };
-// deleteAll();
-
-
-function useDeleteAllFavoriteCats() {
-  const deleteAll = async () => {
-    try {
-      const response = await fetch('https://api.thecatapi.com/v1/favourites', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': 'live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok',
-        }},
-      );
-      const favorites = await response.json();
-      console.log(favorites);
+function useDeleteAllFavoriteCats(
+  API_KEY,
+  API_URL_FAVORITE,
+  API_URL_DELETE,
+  setRefreshFavorites,
+) {
+  const isMountedRef = useRef(false);
   
-      if (favorites.length > 0) {
-        let counter = 0;
-        const cleaningCats = setInterval(async () => {
-          for (let i = 0; i <= 5; i++) {
-            try {
-              await fetch(`https://api.thecatapi.com/v1/favourites/${favorites[counter].id}`, {
-                method: 'DELETE',
-                headers: {
-                  'content-type':'application/json',
-                  'x-api-key': 'live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok'
-                }
-              });
-              counter++;
-            } catch {
-              console.log('Interval ends'); 
-              clearInterval(cleaningCats);
-            }
-          }
-        }, 6000);
-      } else {
-        console.log('Favorite cats list cleaned!');
-      }
-    } catch (error) {
-      console.log(`Error when deleting cats in favorites: ${error}`);
+  React.useEffect(()=>{
+    if (!isMountedRef.current) {
+      isMountedRef.current = true;
+      return;
     }
-  };
-  deleteAll();
-  console.log('Se renderizo');
+
+    const deleteAll = async () => {
+      try {
+        const response = await fetch(API_URL_FAVORITE, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': `${API_KEY}`,
+          }},
+        );
+        const favorites = await response.json();
+        
+        for (const favorite of favorites) {
+          console.log(favorite.id);
+          await fetch(API_URL_DELETE + favorite.id, {
+            method: 'DELETE',
+            headers: {
+              'content-type':'application/json',
+              'x-api-key': `${API_KEY}`,
+            }
+          });
+        }
+        setRefreshFavorites(prevState => !prevState);
+      } catch (error) {
+        console.log(`Error when deleting cats in favorites: ${error}`);
+      }
+    };
+    return deleteAll;
+  }, []);
 }
-// useDeleteAllFavoriteCats();
+
 
 function useFetchCats() {
   const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?limit=2&api_key=live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok';
@@ -188,17 +155,32 @@ function useFetchCats() {
   const API_KEY = 'live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok';
 
   const randomCatsStates = useFetchRandomCats(API_URL_RANDOM);
+
   const favoriteCatsStates = useFetchFavoriteCats(API_URL_FAVORITE);
-  const saveFavoriteCat = useSaveFavoriteCat(API_URL_FAVORITE, favoriteCatsStates.setRefreshFavorites);
-  const deleteFavoriteCat = useDeleteFavoriteCat(API_URL_DELETE, favoriteCatsStates.setRefreshFavorites);
-  const deleteAllFavoriteCats = useDeleteAllFavoriteCats(API_KEY, );
+  
+  const deleteAllFavoriteCats = useDeleteAllFavoriteCats(
+    API_KEY, API_URL_FAVORITE,
+    API_URL_DELETE,
+    favoriteCatsStates.setRefreshFavorites
+  );
+
+  const saveFavoriteCat = useMemo(() => useSaveFavoriteCat(
+    API_URL_FAVORITE,
+    favoriteCatsStates.setRefreshFavorites
+  ),
+  [API_URL_FAVORITE, favoriteCatsStates.setRefreshFavorites]);
+  
+  const deleteFavoriteCat = useMemo(() => useDeleteFavoriteCat(
+    API_URL_DELETE,
+    favoriteCatsStates.setRefreshFavorites),
+  [API_URL_DELETE, favoriteCatsStates.setRefreshFavorites]);
 
   return {
     randomCatsStates,
     favoriteCatsStates,
+    deleteAllFavoriteCats,
     saveFavoriteCat,
     deleteFavoriteCat,
-    deleteAllFavoriteCats,
   };
 }
 
