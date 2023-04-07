@@ -107,44 +107,35 @@ function useDeleteAllFavoriteCats(
   API_KEY,
   API_URL_FAVORITE,
   API_URL_DELETE,
-  setRefreshFavorites,
-) {
-  const isMountedRef = useRef(false);
-  
-  React.useEffect(()=>{
-    if (!isMountedRef.current) {
-      isMountedRef.current = true;
-      return;
-    }
+  setRefreshFavorites) {
 
-    const deleteAll = async () => {
-      try {
-        const response = await fetch(API_URL_FAVORITE, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': `${API_KEY}`,
-          }},
-        );
-        const favorites = await response.json();
+  const deleteAll = async () => {
+    try {
+      const response = await fetch(API_URL_FAVORITE, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': `${API_KEY}`,
+        }},
+      );
+      const favorites = await response.json();
         
-        for (const favorite of favorites) {
-          console.log(favorite.id);
-          await fetch(API_URL_DELETE + favorite.id, {
-            method: 'DELETE',
-            headers: {
-              'content-type':'application/json',
-              'x-api-key': `${API_KEY}`,
-            }
-          });
-        }
-        setRefreshFavorites(prevState => !prevState);
-      } catch (error) {
-        console.log(`Error when deleting cats in favorites: ${error}`);
+      for (const favorite of favorites) {
+        console.log(favorite.id);
+        await fetch(API_URL_DELETE + favorite.id, {
+          method: 'DELETE',
+          headers: {
+            'content-type':'application/json',
+            'x-api-key': `${API_KEY}`,
+          }
+        });
       }
-    };
-    return deleteAll;
-  }, []);
+      setRefreshFavorites(prevState => !prevState);
+    } catch (error) {
+      console.log(`Error when deleting cats in favorites: ${error}`);
+    }
+  };
+  return deleteAll;
 }
 
 
@@ -157,11 +148,12 @@ function useFetchCats() {
   const randomCatsStates = useFetchRandomCats(API_URL_RANDOM);
 
   const favoriteCatsStates = useFetchFavoriteCats(API_URL_FAVORITE);
-  
+
   const deleteAllFavoriteCats = useDeleteAllFavoriteCats(
-    API_KEY, API_URL_FAVORITE,
+    API_KEY,
+    API_URL_FAVORITE,
     API_URL_DELETE,
-    favoriteCatsStates.setRefreshFavorites
+    favoriteCatsStates.setRefreshFavorites,
   );
 
   const saveFavoriteCat = useMemo(() => useSaveFavoriteCat(
@@ -178,9 +170,9 @@ function useFetchCats() {
   return {
     randomCatsStates,
     favoriteCatsStates,
-    deleteAllFavoriteCats,
     saveFavoriteCat,
     deleteFavoriteCat,
+    deleteAllFavoriteCats,
   };
 }
 

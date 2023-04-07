@@ -5,6 +5,7 @@ import { CatsList } from '../../ui/CatsList';
 import { RefreshButton } from '../../ui/RefreshButton';
 import { Header } from '../../ui/Header';
 import { Error } from '../../ui/Error';
+import { DeleteAllFavoriteCatsButton } from '../../ui/DeleteAllFavoriteCatsButton';
 
 function HomePage() {
   const {
@@ -12,6 +13,7 @@ function HomePage() {
     favoriteCatsStates,
     saveFavoriteCat,
     deleteFavoriteCat,
+    deleteAllFavoriteCats,
   } = useFetchCats();
 
   const {
@@ -65,7 +67,7 @@ function HomePage() {
           />
         )}
       />
-      
+      <DeleteAllFavoriteCatsButton onDeleteAll={() => deleteAllFavoriteCats()} />
     </>
   );
 }
