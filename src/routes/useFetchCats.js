@@ -89,13 +89,13 @@ const handleSaveFavoriteCat = (API_URL_FAVORITE, setRefreshFavorites) => {
   return newFavourite;
 };
 
-const handleDeleteFavoriteCat = (API_URL_DELETE, setRefreshFavorites) => {
+const handleDeleteFavoriteCat = (API_URL_DELETE, API_KEY, setRefreshFavorites) => {
   const deleteFavoriteCat = async id => {
     await fetch(API_URL_DELETE + id, {
       method: 'DELETE',
       headers: {
         'content-type':'application/json',
-        'x-api-key': 'live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok'
+        'x-api-key': API_KEY,
       }
     });
     setRefreshFavorites(prevState => !prevState);
@@ -119,7 +119,7 @@ const handleDeleteAllFavoriteCats = (
           method: 'DELETE',
           headers: {
             'content-type':'application/json',
-            'x-api-key': `${API_KEY}`,
+            'x-api-key': API_KEY,
           }
         });
       }
@@ -150,7 +150,7 @@ function useFetchCats() {
 
   const saveFavoriteCat = handleSaveFavoriteCat(API_URL_FAVORITE, setRefreshFavorites);
   
-  const deleteFavoriteCat = handleDeleteFavoriteCat(API_URL_DELETE, setRefreshFavorites);
+  const deleteFavoriteCat = handleDeleteFavoriteCat(API_URL_DELETE, API_KEY, setRefreshFavorites);
 
   const deleteAllFavoriteCats = handleDeleteAllFavoriteCats(
     API_KEY,
