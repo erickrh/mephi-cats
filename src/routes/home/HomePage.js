@@ -6,6 +6,7 @@ import { RefreshButton } from '../../ui/RefreshButton';
 import { Header } from '../../ui/Header';
 import { Error } from '../../ui/Error';
 import { DeleteAllFavoriteCatsButton } from '../../ui/DeleteAllFavoriteCatsButton';
+import { Loading } from '../../ui/Loading';
 
 function HomePage() {
   const {
@@ -41,6 +42,7 @@ function HomePage() {
         error={errorRandom}
         isLoaded={isLoaded}
         onError={ () => <Error error={errorRandom} />}
+        onLoading={() => <Loading />}
         render={cat => (
           <CatImage
             key={cat.id}
@@ -57,6 +59,7 @@ function HomePage() {
         error={errorFavorite}
         isLoaded={isLoadedFavorites}
         onError={() => <Error error={errorFavorite} />}
+        onLoading={() => <Loading />}
         onEmptyFavorites={() => <p>You have no favorite cats yet!</p>}
         onDeleteAllFavoriteCatsButton={() =>
           <DeleteAllFavoriteCatsButton onDeleteAll={

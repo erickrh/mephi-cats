@@ -10,6 +10,8 @@ function CatsList(props) {
         <ul>
           {props.error && props.onError()}
 
+          {(!props.isLoaded) && props.onLoading()}
+
           {(props.isLoaded && !props.error) && props.data.map(props.render)}
         </ul>
 

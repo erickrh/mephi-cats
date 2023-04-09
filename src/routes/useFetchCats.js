@@ -67,6 +67,7 @@ function useFetchFavoriteCats(API_URL_FAVORITE) {
     isLoadedFavorites,
     errorFavorite,
     setRefreshFavorites,
+    setIsLoadedFavorites,
   };
 }
 
@@ -107,10 +108,12 @@ const handleDeleteAllFavoriteCats = (
   API_URL_DELETE,
   favorites,
   setRefreshFavorites,
+  setIsLoadedFavorites,
 ) => {
 
   const deleteAll = async () => {
     try {
+      setIsLoadedFavorites(false);
       for (const favorite of favorites) {
         await fetch(API_URL_DELETE + favorite.id, {
           method: 'DELETE',
@@ -138,16 +141,23 @@ function useFetchCats() {
   const randomCatsStates = useFetchRandomCats(API_URL_RANDOM);
 
   const favoriteCatsStates = useFetchFavoriteCats(API_URL_FAVORITE);
-
-  const saveFavoriteCat = handleSaveFavoriteCat(API_URL_FAVORITE, favoriteCatsStates.setRefreshFavorites);
   
-  const deleteFavoriteCat = handleDeleteFavoriteCat(API_URL_DELETE, favoriteCatsStates.setRefreshFavorites);
+  const {
+    favorites,
+    setRefreshFavorites,
+    setIsLoadedFavorites,
+  } = favoriteCatsStates;
+
+  const saveFavoriteCat = handleSaveFavoriteCat(API_URL_FAVORITE, setRefreshFavorites);
+  
+  const deleteFavoriteCat = handleDeleteFavoriteCat(API_URL_DELETE, setRefreshFavorites);
 
   const deleteAllFavoriteCats = handleDeleteAllFavoriteCats(
     API_KEY,
     API_URL_DELETE,
-    favoriteCatsStates.favorites,
-    favoriteCatsStates.setRefreshFavorites,
+    favorites,
+    setRefreshFavorites,
+    setIsLoadedFavorites,
   );
 
   return {
