@@ -91,13 +91,14 @@ const handleSaveFavoriteCat = (API_URL_FAVORITE, setRefreshFavorites) => {
 
 const handleDeleteFavoriteCat = (API_URL_DELETE, API_KEY, setRefreshFavorites) => {
   const deleteFavoriteCat = async id => {
-    await fetch(API_URL_DELETE + id, {
+    const res = await fetch(API_URL_DELETE + id, {
       method: 'DELETE',
       headers: {
         'content-type':'application/json',
         'x-api-key': API_KEY,
       }
     });
+    console.log(res);
     setRefreshFavorites(prevState => !prevState);
   };
   return deleteFavoriteCat;
