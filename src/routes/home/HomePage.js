@@ -7,6 +7,7 @@ import { Header } from '../../ui/Header';
 import { Error } from '../../ui/Error';
 import { DeleteAllFavoriteCatsButton } from '../../ui/DeleteAllFavoriteCatsButton';
 import { Loading } from '../../ui/Loading';
+import { UploadCatPhoto } from '../../ui/UploadCatPhoto';
 
 function HomePage() {
   const {
@@ -15,6 +16,7 @@ function HomePage() {
     saveFavoriteCat,
     deleteFavoriteCat,
     deleteAllFavoriteCats,
+    uploadCat,
   } = useFetchCats();
 
   const {
@@ -52,6 +54,8 @@ function HomePage() {
           />
         )}
       />
+
+      <UploadCatPhoto uploadCat={uploadCat} />
 
       <CatsList
         title={'Favorite Cats'}

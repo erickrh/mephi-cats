@@ -1,0 +1,19 @@
+.uploadingForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.uploadCatBtn {
+  margin-top: 1em;
+  width: 9.5em;
+}
+
+.output {
+  display: none;
+  margin: 0.5em 2em;
+}
+
+.output--active {
+  display: block;
+  width: 5em;
+}
