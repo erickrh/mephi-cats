@@ -26,6 +26,7 @@ function UploadCatPhoto(props) {
         
         <form className='uploadingForm'>
           <input onChange={previewPhoto} type='file' name='file' className='catPhotoFile' />
+          
           <button onClick={() => {
             props.uploadCat();
             cleanOutput();

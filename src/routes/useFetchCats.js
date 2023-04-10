@@ -135,8 +135,6 @@ const handleDeleteAllFavoriteCats = (
 const handleUploadCat = async (API_URL_UPLOAD, API_KEY) => {
   const uploadingForm = document.querySelector('.uploadingForm');
   const formData = new FormData(uploadingForm);
-  console.log(formData.get('file'));
-
   const res = await fetch(API_URL_UPLOAD, {
     method: 'POST',
     headers: {
