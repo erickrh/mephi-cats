@@ -10,6 +10,7 @@ img {
   width: 100%;
   height: 100%;
   border-radius: 0.5em;
+  box-shadow: grey 0px 0px 9px;
 }
 
 /* img, .favoriteBtn, .deleteBtn {
