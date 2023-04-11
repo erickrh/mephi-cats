@@ -1,5 +1,11 @@
 import React from 'react';
+import axios from 'axios';
 import { useRef } from 'react';
+
+const api = axios.create({
+  baseURL: 'https://api.thecatapi.com/v1/',
+  headers: {'x-api-key': 'live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok'}
+});
 
 function useFetchRandomCats(API_URL_RANDOM) {
   const isMountedRef = useRef(false);
@@ -73,17 +79,25 @@ function useFetchFavoriteCats(API_URL_FAVORITE) {
 
 const handleSaveFavoriteCat = (API_URL_FAVORITE, setRefreshFavorites) => {
   const newFavourite = async id => {
-    const res = await fetch(API_URL_FAVORITE, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        image_id: id
-      }),
+    // const res = await fetch(API_URL_FAVORITE, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     image_id: id
+    //   }),
+    // });
+    // const data = await res.json();
+    // console.log(data);
+
+    const {data, status} = await api.post('/favourites', {
+      image_id: id,
     });
-    const data = await res.json();
+
     console.log(data);
+    console.log(status);
+
     setRefreshFavorites(prevState => !prevState);
   };
   return newFavourite;
