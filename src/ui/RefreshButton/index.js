@@ -1,4 +1,6 @@
 import React from 'react';
+import './RefreshButton.css';
+import { ReactComponent as RefreshSVG } from './refresh-icon.svg';
 
 function RefreshButton(props) {
   const refresh = () => {
@@ -6,7 +8,14 @@ function RefreshButton(props) {
   };
 
   return (
-    <button onClick={refresh}>Refresh</button>
+    <div className="refreshButtonContainer">
+      <button
+        onClick={refresh}
+        className='refreshButton'
+      >
+        <RefreshSVG fill='black' className='refreshIcon' />
+      </button>
+    </div>
   );
 }
 

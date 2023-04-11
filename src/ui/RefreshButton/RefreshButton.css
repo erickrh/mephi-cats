@@ -1,0 +1,21 @@
+.refreshButtonContainer {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.refreshButton {
+  background-color: #FDF7C3;
+  width: 7em;
+  height: 3.5em;
+  border-radius: 20px 5px 20px 5px;
+  box-shadow: 2px 2px 5px grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.refreshIcon {
+  width: 2em;
+  height: 2em;
+}
