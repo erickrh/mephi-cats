@@ -6,15 +6,15 @@ function CatImage(props) {
     <li>
       <img src={props.url} alt="Cat photo" />
 
-      {props.buttonFavorite && (
+      {/* {props.buttonFavorite && (
         <button 
           onClick={props.onFavorite}
           className='favoriteBtn'>
           Mark as favorite
         </button>
-      )}
+      )} */}
 
-      {!props.buttonFavorite && (
+      {/* {!props.buttonFavorite && (
         <button
           className='deleteBtn'
           id='deleteBtn'
@@ -22,7 +22,7 @@ function CatImage(props) {
         >
           Delete favorite
         </button>
-      )}
+      )} */}
     </li>
   );
 }

@@ -2,11 +2,11 @@ li {
   display: flex;
   flex-direction: column;
   list-style-type: none;
-  margin: 20px;
+  margin-bottom: 1em;
 }
 
 img, .favoriteBtn, .deleteBtn {
-  width: 300px;
+  width: 100%;
 }
 
 .deleteBtn {

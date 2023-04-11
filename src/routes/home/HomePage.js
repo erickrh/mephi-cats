@@ -36,7 +36,6 @@ function HomePage() {
     <>
       <Header />
 
-      <RefreshButton setRefresh={setRefresh} />
 
       <CatsList
         title={'Random Cats'}
@@ -54,6 +53,8 @@ function HomePage() {
           />
         )}
       />
+      
+      <RefreshButton setRefresh={setRefresh} />
 
       <UploadCatPhoto uploadCat={uploadCat} />
 

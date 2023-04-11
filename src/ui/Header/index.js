@@ -3,7 +3,11 @@ import './Header.css';
 
 function Header() {
   return (
-    <h1>Cats App</h1>
+    <>
+      <div className='headerContainer'>
+        <h1 className='header'>Mephi Cats</h1>
+      </div>
+    </>
   );
 }
 
