@@ -132,7 +132,7 @@ const handleDeleteAllFavoriteCats = (
   return deleteAll;
 };
 
-const handleUploadCat = async (API_URL_UPLOAD, API_KEY) => {
+const handleUploadCat = async (API_URL_UPLOAD, API_KEY, saveFavoriteCat) => {
   const uploadingForm = document.querySelector('.uploadingForm');
   const formData = new FormData(uploadingForm);
   const res = await fetch(API_URL_UPLOAD, {
@@ -145,6 +145,8 @@ const handleUploadCat = async (API_URL_UPLOAD, API_KEY) => {
   });
   const data = await res.json();
   console.log(data);
+
+  saveFavoriteCat(data.id);
 };
 
 
@@ -178,7 +180,7 @@ function useFetchCats() {
   );
 
   const uploadCat = async () => {
-    await handleUploadCat(API_URL_UPLOAD, API_KEY);
+    await handleUploadCat(API_URL_UPLOAD, API_KEY, saveFavoriteCat);
   };
 
   return {
