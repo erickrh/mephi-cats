@@ -13,10 +13,6 @@ img {
   box-shadow: grey 0px 0px 9px;
 }
 
-/* img, .favoriteBtn, .deleteBtn {
-  width: 100%;
-} */
-
 .deleteBtn {
   background-color: red;
   border: none;
