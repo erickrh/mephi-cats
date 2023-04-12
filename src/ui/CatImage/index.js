@@ -1,42 +1,24 @@
 import React from 'react';
 import './CatImage.css';
+import { useImageWithDoubleTap } from '../../hooks/useImageWithDoubleTap';
 
 function CatImage(props) {
+  const isMobile = ('ontouchstart' in document.documentElement);
+  
   const interactionButton = () => {
-    // if (props.buttonFavorite) {
-    //   props.onFavorite();
-    // } else {
-    //   props.onDelete();
-    // }
-    console.log('like');
-    // props?.buttonFavorite() ?? props.onDelete();
+    props?.buttonFavorite ? props.onFavorite() : props.onDelete();
   };
+      
+  const handleTouchStart = useImageWithDoubleTap(interactionButton);
 
   return (
     <li>
       <img
         src={props.url}
         alt="Cat photo"
-        onDoubleClick={interactionButton}
+        onDoubleClick={isMobile ? undefined :  interactionButton}
+        onTouchStart={isMobile ? handleTouchStart : undefined }
       />
-
-      {/* {props.buttonFavorite && (
-        <button 
-          onClick={props.onFavorite}
-          className='favoriteBtn'>
-          Mark as favorite
-        </button>
-      )} */}
-
-      {/* {!props.buttonFavorite && (
-        <button
-          className='deleteBtn'
-          id='deleteBtn'
-          onClick={props.onDelete}
-        >
-          Delete favorite
-        </button>
-      )} */}
     </li>
   );
 }

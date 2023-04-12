@@ -1,6 +1,6 @@
 import React from 'react';
 import { CatImage } from '../../ui/CatImage';
-import { useFetchCats } from '../useFetchCats';
+import { useFetchCats } from '../../hooks/useFetchCats';
 import { CatsList } from '../../ui/CatsList';
 import { RefreshButton } from '../../ui/RefreshButton';
 import { Header } from '../../ui/Header';
@@ -35,7 +35,6 @@ function HomePage() {
   return (
     <>
       <Header />
-
 
       <CatsList
         title={'Random Cats'}
