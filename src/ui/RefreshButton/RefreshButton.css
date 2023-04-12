@@ -6,13 +6,17 @@
 
 .refreshButton {
   background-color: #FDF7C3;
-  width: 7em;
-  height: 3.5em;
-  border-radius: 20px 5px 20px 5px;
+  width: 4em;
+  height: 4em;
+  border-radius: 100% 100%;
   box-shadow: 2px 2px 5px grey;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.refreshButton:active {
+  background-color: #FFDEB4;
 }
 
 .refreshIcon {

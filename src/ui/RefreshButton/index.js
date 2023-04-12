@@ -2,8 +2,16 @@ import React from 'react';
 import './RefreshButton.css';
 import { ReactComponent as RefreshSVG } from './refresh-icon.svg';
 
+const handleScrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+
 function RefreshButton(props) {
   const refresh = () => {
+    handleScrollToTop();
     props.setRefresh(prevState => !prevState);
   };
 
