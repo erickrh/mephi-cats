@@ -46,6 +46,7 @@ function HomePage() {
         render={cat => (
           <CatImage
             key={cat.id}
+            id={cat.id}
             url={cat.url}
             buttonFavorite={true}
             onFavorite={() => saveFavoriteCat(cat.id)}
@@ -72,6 +73,7 @@ function HomePage() {
         render={cat => (
           <CatImage
             key={cat.id}
+            id={cat.id}
             url={cat.image.url}
             buttonFavorite={false}
             onDelete={() => deleteFavoriteCat(cat.id)}

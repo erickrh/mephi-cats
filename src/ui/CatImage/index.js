@@ -6,22 +6,18 @@ import { ReactComponent as BreakHeartIcon } from './breakHeart.svg';
 
 function CatImage(props) {
   const isMobile = ('ontouchstart' in document.documentElement);
-  
-  // const animation = (e) => {
-  // console.log(e.target.value);
-  // let icon;
-  // if (props?.buttonFavorite) {
-  //   icon = document.querySelector('.HeartIcon');
-  //   icon.classList.add('animateIcon');
-  // } else {
-  //   icon = document.querySelector('.breakHeartIcon');
-  //   icon.classList.add('animateIcon');
-  // }
-  // };
 
+  const animation = () => {
+    const addAnimation = document.querySelector(`.icon-${props.id}`);
+    addAnimation.classList.add('animateIcon');
+    setTimeout(() => {
+      addAnimation.classList.remove('animateIcon');
+    }, 600);
+  };
   
   const interactionButton = () => {
     props?.buttonFavorite ? props.onFavorite() : props.onDelete();
+    animation();
   };
 
   const handleTouchStart = useImageWithDoubleTap(interactionButton);
@@ -36,11 +32,11 @@ function CatImage(props) {
       />
       <div className="heartIconContainer">
         {props.buttonFavorite && 
-          <HeartIcon fill='#FFB4B4' className='heartIcon' />
+          <HeartIcon fill='#FFB4B4' className={`heartIcon icon-${props.id}`} />
         }
         {
           !props.buttonFavorite && 
-          <BreakHeartIcon fill='#FFB4B4' className='breakHeartIcon' />
+          <BreakHeartIcon fill='#FFB4B4' className={`breakHeartIcon icon-${props.id}`} />
         }
       </div>
     </li>
