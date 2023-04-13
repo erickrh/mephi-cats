@@ -20,28 +20,32 @@ function LikesPage() {
   } = favoriteCatsStates;
 
   return (
-    <CatsList
-      title={'Favorite Cats'}
-      data={favorites}
-      error={errorFavorite}
-      isLoaded={isLoadedFavorites}
-      onError={() => <Error error={errorFavorite} />}
-      onLoading={() => <Loading />}
-      onEmptyFavorites={() => <p>You have no favorite cats yet!</p>}
-      onDeleteAllFavoriteCatsButton={() =>
-        <DeleteAllFavoriteCatsButton onDeleteAll={
-          () => deleteAllFavoriteCats()}
-        />}
-      render={cat => (
-        <CatImage
-          key={cat.id}
-          id={cat.id}
-          url={cat.image.url}
-          buttonFavorite={false}
-          onDelete={() => deleteFavoriteCat(cat.id)}
-        />
-      )}
-    />
+    <>
+      <CatsList
+        title={'Favorite Cats'}
+        data={favorites}
+        error={errorFavorite}
+        isLoaded={isLoadedFavorites}
+        onError={() => <Error error={errorFavorite} />}
+        onLoading={() => <Loading />}
+        onEmptyFavorites={() => <p>You have no favorite cats yet!</p>}
+        onDeleteAllFavoriteCatsButton={() =>
+          <DeleteAllFavoriteCatsButton onDeleteAll={
+            () => deleteAllFavoriteCats()}
+          />}
+        render={cat => (
+          <CatImage
+            key={cat.id}
+            id={cat.id}
+            url={cat.image.url}
+            buttonFavorite={false}
+            onDelete={() => deleteFavoriteCat(cat.id)}
+          />
+        )}
+      />
+
+      <div style={{marginBottom: '5em'}}></div>
+    </>
   );
 }
 
