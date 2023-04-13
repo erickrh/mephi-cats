@@ -1,6 +1,6 @@
 import React from 'react';
 import './RefreshButton.css';
-import { ReactComponent as RefreshSVG } from './refresh-icon.svg';
+import { ReactComponent as RefreshSVG } from '../icons/refresh-icon.svg';
 
 const handleScrollToTop = () => {
   window.scrollTo({
