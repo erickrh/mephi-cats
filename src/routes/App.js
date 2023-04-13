@@ -4,6 +4,7 @@ import './App.css';
 import { HomePage } from './home/HomePage';
 import { Navbar } from '../ui/Navbar';
 import { LikesPage } from './likes/LikesPage';
+import { UploadPage } from './upload/UploadPage';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         <Route path='/' element={<HomePage />} />
 
         <Route path='/likes' element={<LikesPage />} />
+
+        <Route path='/upload' element={<UploadPage />} />
 
         <Route path='*' element={<HomePage />} />
       </Routes>
