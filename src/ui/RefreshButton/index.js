@@ -16,15 +16,13 @@ function RefreshButton(props) {
   };
 
   return (
-    <div className="flexRefreshContainer">
-      <div className="refreshButtonContainer">
-        <button
-          onClick={refresh}
-          className='refreshButton'
-        >
-          <RefreshSVG fill='black' className='refreshIcon' />
-        </button>
-      </div>
+    <div className="refreshButtonContainer">
+      <button
+        onClick={refresh}
+        className='refreshButton'
+      >
+        <RefreshSVG fill='black' className='refreshIcon' />
+      </button>
     </div>
   );
 }

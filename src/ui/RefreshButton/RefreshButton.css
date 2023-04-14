@@ -1,18 +1,14 @@
-.flexRefreshContainer {
+.refreshButtonContainer {
   display: flex;
   justify-content: center;
-}
-
-.refreshButtonContainer {
+  align-items: center;
   margin-bottom: 5em;
-  width: 2.5em;
-  height: 2.5em;
 }
 
 .refreshButton {
   background-color: #FDF7C3;
-  width: 100%;
-  height: 100%;
+  width: 3em;
+  height: 3em;
   border-radius: 100% 100%;
   box-shadow: 2px 2px 5px grey;
 }
@@ -21,7 +17,7 @@
   background-color: #FFDEB4;
 }
 
-.refreshIcon {
+/* .refreshIcon {
   width: 100%;
   height: 100%;
-}
+} */
