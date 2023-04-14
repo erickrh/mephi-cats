@@ -163,8 +163,9 @@ const handleUploadCat = async (API_URL_UPLOAD, API_KEY, saveFavoriteCat) => {
   saveFavoriteCat(data.id);
 };
 
+const catsContext = React.createContext();
 
-function useFetchCats() {
+function CatsProvider({ children }) {
   const API_KEY = 'live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok';
   const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?limit=10&api_key=live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok';
   const API_URL_FAVORITE = 'https://api.thecatapi.com/v1/favourites?limit=100&api_key=live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok';
@@ -197,7 +198,7 @@ function useFetchCats() {
     await handleUploadCat(API_URL_UPLOAD, API_KEY, saveFavoriteCat);
   };
 
-  return {
+  const dataCats = {
     randomCatsStates,
     favoriteCatsStates,
     saveFavoriteCat,
@@ -205,6 +206,17 @@ function useFetchCats() {
     deleteAllFavoriteCats,
     uploadCat,
   };
+
+  return (
+    <catsContext.Provider value={dataCats}>
+      {children}
+    </catsContext.Provider>
+  );
 }
 
-export { useFetchCats };
+function useFetchCats() {
+  const fetchCats = React.useContext(catsContext);
+  return fetchCats;
+}
+
+export {CatsProvider, useFetchCats };

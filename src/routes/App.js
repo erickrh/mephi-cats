@@ -6,23 +6,28 @@ import { HomePage } from './home/HomePage';
 import { Navbar } from '../ui/Navbar';
 import { LikesPage } from './likes/LikesPage';
 import { UploadPage } from './upload/UploadPage';
+import { CatsProvider } from '../hooks/useFetchCats';
 
 function App() {
   return (
     <HashRouter>
-      <Header />
+      <CatsProvider>
 
-      <Routes>
-        <Route path='/' element={<HomePage />} />
+        <Header />
 
-        <Route path='/likes' element={<LikesPage />} />
+        <Routes>
+          <Route path='/' element={<HomePage />} />
 
-        <Route path='/upload' element={<UploadPage />} />
+          <Route path='/likes' element={<LikesPage />} />
 
-        <Route path='*' element={<HomePage />} />
-      </Routes>
+          <Route path='/upload' element={<UploadPage />} />
 
-      <Navbar />
+          <Route path='*' element={<HomePage />} />
+        </Routes>
+
+        <Navbar />
+
+      </CatsProvider>
     </HashRouter>
   );
 }
