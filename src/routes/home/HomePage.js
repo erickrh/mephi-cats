@@ -16,7 +16,7 @@ function HomePage() {
     data,
     isLoaded,
     errorRandom,
-    setRefresh
+    setRefresh,
   } = randomCatsStates;
 
   return (
