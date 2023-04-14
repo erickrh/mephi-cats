@@ -11,7 +11,7 @@ function useFetchRandomCats(API_URL_RANDOM) {
   const isMountedRef = useRef(false);
   const [refresh, setRefresh] = React.useState(false);
   const [data, setData] = React.useState([]);
-  const [isLoaded, setIsLoaded] = React.useState(true);
+  const [isLoaded, setIsLoaded] = React.useState(false);
   const [errorRandom, setErrorRandom] = React.useState(null);
 
   React.useEffect(() => {
@@ -22,13 +22,14 @@ function useFetchRandomCats(API_URL_RANDOM) {
     const fetchRandomCats = async () => {
       try {
         let req = await fetch(API_URL_RANDOM);
+        setIsLoaded(true);
         let res = await req.json();
         setData(res);
       } catch (error) {
+        setIsLoaded(true);
         setErrorRandom(error);
       }
     };
-    setIsLoaded(true);
     fetchRandomCats();
   }, [refresh]);
 
@@ -57,12 +58,13 @@ function useFetchFavoriteCats(API_URL_FAVORITE) {
       try {
         let req = await fetch(API_URL_FAVORITE);
         let res = await req.json();
+        setIsLoadedFavorites(true);
         setFavorites(res);
       } catch (error) {
+        setIsLoadedFavorites(true);
         setErrorFavorite(error);
       }
     };
-    setIsLoadedFavorites(true);
     fetchFavoriteCats();
   }, [refreshFavorites]);
 
