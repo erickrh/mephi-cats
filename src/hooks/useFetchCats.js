@@ -11,7 +11,7 @@ function useFetchRandomCats(API_URL_RANDOM) {
   const isMountedRef = useRef(false);
   const [refresh, setRefresh] = React.useState(false);
   const [data, setData] = React.useState([]);
-  const [isLoaded, setIsLoaded] = React.useState(false);
+  const [isLoaded, setIsLoaded] = React.useState(true);
   const [errorRandom, setErrorRandom] = React.useState(null);
 
   React.useEffect(() => {
