@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { useRef } from 'react';
 
 const api = axios.create({
   baseURL: 'https://api.thecatapi.com/v1/',
@@ -8,22 +7,17 @@ const api = axios.create({
 api.defaults.headers.common['X-API-KEY'] = 'live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok';
 
 function useFetchRandomCats(API_URL_RANDOM) {
-  const isMountedRef = useRef(false);
   const [refresh, setRefresh] = React.useState(false);
   const [data, setData] = React.useState([]);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [errorRandom, setErrorRandom] = React.useState(null);
 
   React.useEffect(() => {
-    if (!isMountedRef.current) {
-      isMountedRef.current = true;
-      return;
-    }
     const fetchRandomCats = async () => {
       try {
         let req = await fetch(API_URL_RANDOM);
-        setIsLoaded(true);
         let res = await req.json();
+        setIsLoaded(true);
         setData(res);
       } catch (error) {
         setIsLoaded(true);
@@ -42,18 +36,12 @@ function useFetchRandomCats(API_URL_RANDOM) {
 }
 
 function useFetchFavoriteCats(API_URL_FAVORITE) {
-  const isMountedRef = useRef(false);
   const [favorites, setFavorites] = React.useState([]);
   const [errorFavorite, setErrorFavorite] = React.useState(null);
   const [refreshFavorites, setRefreshFavorites] = React.useState(false);
   const [isLoadedFavorites, setIsLoadedFavorites] = React.useState(false);
 
   React.useEffect(() => {
-    if (!isMountedRef.current) {
-      isMountedRef.current = true;
-      return;
-    }
-
     const fetchFavoriteCats = async () => {
       try {
         let req = await fetch(API_URL_FAVORITE);
