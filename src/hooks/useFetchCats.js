@@ -27,8 +27,8 @@ function useFetchRandomCats(API_URL_RANDOM) {
       } catch (error) {
         setErrorRandom(error);
       }
-      setIsLoaded(true);
     };
+    setIsLoaded(true);
     fetchRandomCats();
   }, [refresh]);
 
@@ -61,8 +61,8 @@ function useFetchFavoriteCats(API_URL_FAVORITE) {
       } catch (error) {
         setErrorFavorite(error);
       }
-      setIsLoadedFavorites(true);
     };
+    setIsLoadedFavorites(true);
     fetchFavoriteCats();
   }, [refreshFavorites]);
 
