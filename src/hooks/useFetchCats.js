@@ -4,8 +4,8 @@ import { useRef } from 'react';
 
 const api = axios.create({
   baseURL: 'https://api.thecatapi.com/v1/',
-  headers: {'x-api-key': 'live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok'}
 });
+api.defaults.headers.common['X-API-KEY'] = 'live_j7OLb6c46CqOfAFuGCl5rLmrX9r2WItUh9pKwclJ2P32cDzQhOR6ePJ0jqneLsok';
 
 function useFetchRandomCats(API_URL_RANDOM) {
   const isMountedRef = useRef(false);
