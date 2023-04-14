@@ -23,11 +23,11 @@ function useFetchRandomCats(API_URL_RANDOM) {
       try {
         let req = await fetch(API_URL_RANDOM);
         let res = await req.json();
-        setIsLoaded(true);
         setData(res);
-      } catch (error) {
         setIsLoaded(true);
+      } catch (error) {
         setErrorRandom(error);
+        setIsLoaded(true);
       }
     };
     fetchRandomCats();
@@ -58,11 +58,11 @@ function useFetchFavoriteCats(API_URL_FAVORITE) {
       try {
         let req = await fetch(API_URL_FAVORITE);
         let res = await req.json();
-        setIsLoadedFavorites(true);
         setFavorites(res);
-      } catch (error) {
         setIsLoadedFavorites(true);
+      } catch (error) {
         setErrorFavorite(error);
+        setIsLoadedFavorites(true);
       }
     };
     fetchFavoriteCats();
