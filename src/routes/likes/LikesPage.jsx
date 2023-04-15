@@ -19,6 +19,14 @@ function LikesPage() {
     errorFavorite,
   } = favoriteCatsStates;
 
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto',
+    });
+  };
+  handleScrollToTop();
+
   return (
     <>
       <CatsList

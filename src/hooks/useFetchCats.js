@@ -46,6 +46,7 @@ function useFetchFavoriteCats(API_URL_FAVORITE) {
       try {
         let req = await fetch(API_URL_FAVORITE);
         let res = await req.json();
+        res.reverse();
         setIsLoadedFavorites(true);
         setFavorites(res);
       } catch (error) {
