@@ -5,12 +5,16 @@
   height: 3.2em;
   bottom: 0;
   z-index: 3;
+  display: flex;
 }
 
 .navbar ul {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+}
+
+.navbar ul li {
+  margin: 0;
 }
 
 .navbarButton {
@@ -22,6 +26,8 @@
 .navbarIcon {
   width: 2em;
   height: 2em;
+  display: flex;
+  align-items: center;
 }
 
 .homeIcon {
