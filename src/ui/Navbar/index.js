@@ -7,6 +7,18 @@ import { useLocation, NavLink } from 'react-router-dom';
 
 function Navbar() {
   const location = useLocation();
+  const [currentLocation, setCurrentLocation] = React.useState('');
+
+  const handleScrollToTop = route => {
+    if (currentLocation === route) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    } else {
+      setCurrentLocation(route);
+    }
+  };
 
   const routes = [];
 
@@ -29,7 +41,10 @@ function Navbar() {
         {routes.map(route => {
           return (
             <li key={route.to}>
-              <button className='navbarButton'>
+              <button
+                className='navbarButton'
+                onClick={() => handleScrollToTop(route.to)}
+              >
                 <NavLink to={route.to}>
                   {route.component}
                 </NavLink>
