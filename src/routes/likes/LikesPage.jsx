@@ -5,6 +5,7 @@ import { CatImage } from '../../ui/CatImage';
 import { Error } from '../../ui/Error';
 import { Loading } from '../../ui/Loading';
 import { DeleteAllFavoriteCatsButton } from '../../ui/DeleteAllFavoriteCatsButton';
+import { EmptyFavorite } from '../../ui/EmptyFavorite';
 
 function LikesPage() {
   const {
@@ -36,7 +37,7 @@ function LikesPage() {
         isLoaded={isLoadedFavorites}
         onError={() => <Error error={errorFavorite} />}
         onLoading={() => <Loading />}
-        onEmptyFavorites={() => <p>You have no favorite cats yet!</p>}
+        onEmptyFavorites={() => <EmptyFavorite />}
         onDeleteAllFavoriteCatsButton={() =>
           <DeleteAllFavoriteCatsButton onDeleteAll={
             () => deleteAllFavoriteCats()}
