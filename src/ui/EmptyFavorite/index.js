@@ -7,7 +7,6 @@ function EmptyFavorite() {
     <>
       <div className="emptyContainer">
         <p>You don&apos;t have favorite cats yet!</p>
-        {/* <p>&lt;/3</p> */}
         <div className="MooncatContainer">
           <Mooncat className="Mooncat" />
         </div>
