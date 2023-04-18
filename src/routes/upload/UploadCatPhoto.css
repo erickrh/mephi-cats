@@ -16,6 +16,7 @@
   background-color: #FFB4B4;
   border-radius: 0.5em;
   box-shadow: 0.1em 0.2em 0.6em #B2A4FF;
+  width: 50%;
 }
 
 .uploadTitle {
@@ -49,7 +50,6 @@
 }
 
 .catPhotoFile {
-  position: absolute;
   visibility: hidden;
 }
 
