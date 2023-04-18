@@ -51,6 +51,7 @@
 
 .catPhotoFile {
   visibility: hidden;
+  width: 1px;
 }
 
 .uploadCatBtn {
