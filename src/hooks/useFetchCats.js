@@ -66,7 +66,7 @@ function useFetchFavoriteCats(API_URL_FAVORITE) {
   };
 }
 
-const handleSaveFavoriteCat = (API_URL_FAVORITE, setRefreshFavorites) => {
+const handleSaveFavoriteCat = (API_URL_FAVORITE, setRefreshFavorites, setIsUploading) => {
   const newFavourite = async id => {
     // const res = await fetch(API_URL_FAVORITE, {
     //   method: 'POST',
@@ -86,8 +86,9 @@ const handleSaveFavoriteCat = (API_URL_FAVORITE, setRefreshFavorites) => {
 
     console.log(data);
     console.log(status);
-
     setRefreshFavorites(prevState => !prevState);
+    
+    if (data.message === 'SUCCESS') setIsUploading(false);
   };
   return newFavourite;
 };
@@ -135,21 +136,26 @@ const handleDeleteAllFavoriteCats = (
   return deleteAll;
 };
 
-const handleUploadCat = async (API_URL_UPLOAD, API_KEY, saveFavoriteCat) => {
+const handleUploadCat = async (API_URL_UPLOAD, API_KEY, saveFavoriteCat, setIsUploading) => {
+  setIsUploading(true);
   const uploadingForm = document.querySelector('.uploadingForm');
   const formData = new FormData(uploadingForm);
-  const res = await fetch(API_URL_UPLOAD, {
-    method: 'POST',
-    headers: {
-      // 'Content-Type': 'multipart/form-data',
-      'x-api-key': API_KEY,
-    },
-    body: formData,
-  });
-  const data = await res.json();
-  console.log(data);
-
-  saveFavoriteCat(data.id);
+  try {
+    const res = await fetch(API_URL_UPLOAD, {
+      method: 'POST',
+      headers: {
+        // 'Content-Type': 'multipart/form-data',
+        'x-api-key': API_KEY,
+      },
+      body: formData,
+    });
+    const data = await res.json();
+    console.log(data);
+    console.log(res.status);
+    saveFavoriteCat(data.id);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const catsContext = React.createContext();
@@ -171,7 +177,9 @@ function CatsProvider({ children }) {
     setIsLoadedFavorites,
   } = favoriteCatsStates;
 
-  const saveFavoriteCat = handleSaveFavoriteCat(API_URL_FAVORITE, setRefreshFavorites);
+  const [isUploading, setIsUploading] = React.useState(false);
+
+  const saveFavoriteCat = handleSaveFavoriteCat(API_URL_FAVORITE, setRefreshFavorites, setIsUploading);
   
   const deleteFavoriteCat = handleDeleteFavoriteCat(API_URL_DELETE, API_KEY, setRefreshFavorites);
 
@@ -184,10 +192,11 @@ function CatsProvider({ children }) {
   );
 
   const uploadCat = async () => {
-    await handleUploadCat(API_URL_UPLOAD, API_KEY, saveFavoriteCat);
+    await handleUploadCat(API_URL_UPLOAD, API_KEY, saveFavoriteCat, setIsUploading);
   };
 
   const dataCats = {
+    isUploading,
     randomCatsStates,
     favoriteCatsStates,
     saveFavoriteCat,

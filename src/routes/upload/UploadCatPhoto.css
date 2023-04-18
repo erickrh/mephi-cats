@@ -1,0 +1,117 @@
+.uploadContainer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.uploadBoxDotted {
+  padding: 1.5em;
+  border: dotted gray 0.2em;
+  background-color: #FFB4B4;
+  border-radius: 0.5em;
+  box-shadow: 0.1em 0.2em 0.6em #B2A4FF;
+}
+
+.uploadTitle {
+  text-align: center;
+  font-family: 'Red Hat Text Light';
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0.1em 0.1em 0.2em gray;
+  font-size: 1.6em;
+  margin: 0.3em 0 0.3em 0;
+}
+
+.uploadingForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputContainer {
+  width: 100%;
+  height: 3em;
+}
+
+.labelFile {
+  width: 100%;
+  height: 100%;
+}
+
+.UploadSVG:active {
+  fill: white;
+}
+
+.catPhotoFile {
+  position: absolute;
+  visibility: hidden;
+}
+
+.uploadCatBtn {
+  color: #000;
+  box-shadow: #B2A4FF 0.2em -0.2em 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5em;
+  border: solid black 1px;
+  font-family: 'Red Hat Text Light';
+  font-weight: bold;
+  background-color: #FDF7C3;
+  width: 8em;
+  height: 2.5em;
+  margin-top: 1em;
+}
+
+.uploadCatBtn:active {
+  background-color: #FFDEB4;
+}
+
+.output {
+  display: none;
+  margin: 0.5em 0;
+}
+
+.output--active {
+  display: block;
+  width: 7em;
+  border: 1px solid black;
+  border-radius: 0.5em;
+}
+
+.outputContainer {
+  position: relative;
+}
+
+.CloseSVG {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  fill: #000;
+  top: 0.9em;
+  right: 0.4em;
+  z-index: 10;
+  display: none;
+}
+
+.CloseSVG:active {
+  fill: white;
+}
+
+.msg {
+  display: none;
+  margin-top: 1em;
+  font-family: 'Red Hat Text Light';
+  font-weight: bold;
+  color: #000;
+}
+
+.showElement {
+  display: flex;
+}
