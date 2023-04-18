@@ -62,7 +62,7 @@ function UploadPage() {
               <label htmlFor="file" className='labelImg'>
                 <img
                   className={`output ${isLoadPhoto && 'output--active'}`}
-                  alt="Your upload photo" 
+                  alt="Your upload photo"
                 />
               </label>
               <CloseSVG
