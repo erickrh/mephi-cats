@@ -59,11 +59,12 @@ function UploadPage() {
             </div>
 
             <div className="outputContainer">
-              {/* <label htmlFor="file" className='labelImg'></label> */}
-              <img
-                className={`output ${isLoadPhoto && 'output--active'}`}
-                alt="Your upload photo" 
-              />
+              <label htmlFor="file" className='labelImg'>
+                <img
+                  className={`output ${isLoadPhoto && 'output--active'}`}
+                  alt="Your upload photo" 
+                />
+              </label>
               <CloseSVG
                 className={`CloseSVG ${isLoadPhoto && 'showElement'}`}
                 onClick={cleanOutput}

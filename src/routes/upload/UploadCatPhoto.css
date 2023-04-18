@@ -11,12 +11,12 @@
 }
 
 .uploadBoxDotted {
-  padding: 1.5em;
+  padding: 1em;
   border: dotted gray 0.2em;
   background-color: #FFB4B4;
   border-radius: 0.5em;
   box-shadow: 0.1em 0.2em 0.6em #B2A4FF;
-  width: 50%;
+  width: 80%;
 }
 
 .uploadTitle {
@@ -26,7 +26,8 @@
   color: #000;
   text-shadow: 0.1em 0.1em 0.2em gray;
   font-size: 1.3em;
-  margin: 0.3em 0 0.3em 0;
+  padding: 0;
+  margin: 0 0 0.5em 0;
 }
 
 .uploadingForm {
@@ -81,9 +82,10 @@
 
 .output--active {
   display: block;
-  width: 7em;
+  width: 11em;
   border: 1px solid black;
   border-radius: 0.5em;
+  margin-bottom: 0em;
 }
 
 .outputContainer {
@@ -111,6 +113,7 @@
   font-family: 'Red Hat Text Light';
   font-weight: bold;
   color: #000;
+  text-align: center;
 }
 
 .showElement {
