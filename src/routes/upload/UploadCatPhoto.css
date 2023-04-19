@@ -106,11 +106,15 @@
   top: 0.9em;
   right: 0.4em;
   z-index: 10;
-  display: none;
+  visibility: hidden;
 }
 
 .CloseSVG:active {
   fill: white;
+}
+
+.CloseSVG--active  {
+  visibility: visible;
 }
 
 .msg {

@@ -66,7 +66,7 @@ function UploadPage() {
                 />
               </label>
               <CloseSVG
-                className={`CloseSVG ${isLoadPhoto && 'showElement'}`}
+                className={`CloseSVG ${isLoadPhoto && 'CloseSVG--active'}`}
                 onClick={cleanOutput}
               />
             </div>
