@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #ffffff;
+  background-color: #F8EDE3;
   position: fixed;
   width: 100%;
   height: 3.2em;
@@ -28,6 +28,7 @@
   height: 2em;
   display: flex;
   align-items: center;
+  fill: #7D6E83;
 }
 
 .homeIcon {
@@ -36,5 +37,5 @@
 
 /* Change color by location */
 .fillSVG {
-  fill: #7D6E83;
+  fill: #000;
 }
