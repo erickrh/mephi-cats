@@ -79,13 +79,14 @@
   visibility: hidden;
   margin: 0.5em 0;
   position: absolute;
+  object-fit: cover;
+  object-position: center;
 }
 
 .output--active {
   display: block;
   width: 11em;
-  /* height: 40vh; */
-  height: 300px;
+  height: 30vh;
   border: 1px solid black;
   border-radius: 0.5em;
   margin-bottom: 0em;
