@@ -12,10 +12,10 @@
 
 .uploadBoxDotted {
   padding: 1em;
-  border: dotted gray 0.2em;
-  background-color: #FFB4B4;
+  border: dotted #D0B8A8 0.2em;
+  background-color: #E7E6E1;
   border-radius: 0.5em;
-  box-shadow: 0.1em 0.2em 0.6em #B2A4FF;
+  box-shadow: 0.1em 0.2em 0.6em #7D6E83;
   width: 80%;
 }
 
@@ -23,8 +23,8 @@
   text-align: center;
   font-family: 'Red Hat Text Light';
   font-weight: bold;
-  color: #000;
-  text-shadow: 0.1em 0.1em 0.2em gray;
+  color: #4d4747;
+  text-shadow: 0.1em 0.1em 0.2em #7D6E83;
   font-size: 1.3em;
   padding: 0;
   margin: 0 0 0.5em 0;
@@ -46,6 +46,10 @@
   height: 100%;
 }
 
+.UploadSVG {
+  fill: #7D6E83;
+}
+
 .UploadSVG:active {
   fill: white;
 }
@@ -56,16 +60,16 @@
 }
 
 .uploadCatBtn {
-  color: #000;
-  box-shadow: #B2A4FF 0.2em -0.2em 0.5em;
+  color: #4d4747;
+  box-shadow: #7D6E83 0.2em -0.2em 0.5em;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 0.5em;
-  border: solid black 1px;
+  border: solid #4d4747 1px;
   font-family: 'Red Hat Text Light';
   font-weight: bold;
-  background-color: #FDF7C3;
+  background-color: #DFD3C3;
   width: 8em;
   height: 2.5em;
   margin-top: 1em;
@@ -73,7 +77,7 @@
 }
 
 .uploadCatBtn:active {
-  background-color: #FFDEB4;
+  background-color: #7D6E83;
 }
 
 .imageContainer {

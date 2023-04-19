@@ -24,15 +24,15 @@ function Navbar() {
 
   routes.push({
     to: '/',
-    component: <HomeSVG className={`navbarIcon homeIcon ${location.pathname === '/' && 'fillHome'}`} />
+    component: <HomeSVG className={`navbarIcon homeIcon ${location.pathname === '/' && 'fillSVG'}`} />
   });
   routes.push({
     to: '/likes',
-    component: <LikeSVG className={`navbarIcon likeIcon ${location.pathname === '/likes' && 'fillLikes'}`} />
+    component: <LikeSVG className={`navbarIcon likeIcon ${location.pathname === '/likes' && 'fillSVG'}`} />
   });
   routes.push({
     to: '/upload',
-    component: <UploadSVG className={`navbarIcon uploadIcon ${location.pathname === '/upload' && 'fillUploads'}`} />
+    component: <UploadSVG className={`navbarIcon uploadIcon ${location.pathname === '/upload' && 'fillSVG'}`} />
   });
 
   return (

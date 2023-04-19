@@ -35,14 +35,6 @@
 }
 
 /* Change color by location */
-.fillHome {
-  fill: #B2A4FF;
-}
-
-.fillLikes {
-  fill: #FFB4B4;
-}
-
-.fillUploads {
-  fill: #FFDEB4;
+.fillSVG {
+  fill: #7D6E83;
 }

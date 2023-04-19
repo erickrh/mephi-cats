@@ -13,22 +13,7 @@ img {
   object-fit: cover;
   width: 100%;
   height: 100%;
-  box-shadow: grey 0px 0px 5px;
-}
-
-.deleteBtn {
-  background-color: red;
-  border: none;
-}
-
-#deleteBtn:active {
-  height: 1.5em;
-  background-color: rgba(255, 0, 0, 0.582);
-  font-weight: bold;
-}
-
-.deleteBtn:hover {
-  background-color: rgb(236, 54, 54);
+  box-shadow: #7D6E83 0px 0px 5px;
 }
 
 .heartIconContainer {
