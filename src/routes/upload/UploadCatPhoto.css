@@ -75,16 +75,23 @@
   background-color: #FFDEB4;
 }
 
+.imageContainer {
+  position: relative;
+}
+
 .output {
   visibility: hidden;
   margin: 0.5em 0;
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   object-fit: cover;
   object-position: center;
 }
 
 .output--active {
-  display: block;
   width: 11em;
   height: 30vh;
   border: 1px solid black;
