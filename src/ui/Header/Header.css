@@ -27,9 +27,17 @@
   color: #7D6E83;
 }
 
+.header:active {
+  color: white;
+}
+
 .BlackCat {
   fill: #7D6E83;
   width: 2em;
   height: 2em;
   margin-left: 1em;
+}
+
+.BlackCat:active {
+  fill: white;
 }
