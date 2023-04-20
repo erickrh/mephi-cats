@@ -17,6 +17,7 @@
   background-color: #F8EDE3;
   width: 12em;
   height: 2.5em;
+  cursor: pointer;
 }
 
 .deleteAllButton:active {
