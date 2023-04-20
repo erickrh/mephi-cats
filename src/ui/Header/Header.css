@@ -11,6 +11,13 @@
   z-index: 40;
 }
 
+.improveHeaderButton {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
 .header {
   margin: 0;
   text-align: center;
@@ -18,7 +25,6 @@
   font-weight: bold;
   font-size: 2.2em;
   color: #7D6E83;
-  cursor: pointer;
 }
 
 .BlackCat {
@@ -26,5 +32,4 @@
   width: 2em;
   height: 2em;
   margin-left: 1em;
-  cursor: pointer;
 }

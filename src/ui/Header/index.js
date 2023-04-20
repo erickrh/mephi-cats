@@ -10,8 +10,8 @@ function Header() {
   return (
     <>
       <div className='headerContainer'>
-        <h1 onClick={goHome} className='header'>Mephi Cats</h1>
-        <BlackCat onClick={goHome} className='BlackCat' />
+        <h1 onClick={goHome} className='header improveHeaderButton'>Mephi Cats</h1>
+        <BlackCat onClick={goHome} className='BlackCat improveHeaderButton' />
       </div>
     </>
   );
