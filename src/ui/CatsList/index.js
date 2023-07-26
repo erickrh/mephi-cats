@@ -2,15 +2,24 @@ import React from 'react';
 import './CatsList.css';
 
 function CatsList(props) {
+  const newList = [];
+  
+  for (let i = 0; i < 9; i++) {
+    newList.push(props.data[i]);
+  }
+
   return (
     <>
       <section className={props.title}>
         <ul>
-          {props.error && props.onError()}
+          <div className="catListGridContainer">
 
-          {(!props.isLoaded) && props.onLoading()}
+            {props.error && props.onError()}
 
-          {(props.isLoaded && !props.error) && props.data.map(props.render)}
+            {(!props.isLoaded) && props.onLoading()}
+
+            {(props.isLoaded && !props.error) && newList.map(props.render)}
+          </div>
         </ul>
 
         {(props.isLoaded && !props.error && props.data.length <= 0 && props.title === 'Favorite Cats') && props.onEmptyFavorites()}

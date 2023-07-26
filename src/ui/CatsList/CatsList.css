@@ -4,3 +4,13 @@ ul {
   padding: 0;
   box-sizing: border-box;
 }
+
+
+/* MEDIA QUERIES */
+
+@media (min-width: 800px) {
+  .catListGridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
