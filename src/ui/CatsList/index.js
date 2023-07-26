@@ -3,10 +3,15 @@ import './CatsList.css';
 
 function CatsList(props) {
   const newList = [];
+  let listChosen = [];
   
   for (let i = 0; i < 9; i++) {
     newList.push(props.data[i]);
   }
+
+  if (props.title === 'Random Cats') listChosen = newList;
+  else listChosen = props.data;
+  console.log(props.data);
 
   return (
     <>
@@ -18,7 +23,7 @@ function CatsList(props) {
 
             {(!props.isLoaded) && props.onLoading()}
 
-            {(props.isLoaded && !props.error) && newList.map(props.render)}
+            {(props.isLoaded && !props.error) && listChosen.map(props.render)}
           </div>
         </ul>
 
