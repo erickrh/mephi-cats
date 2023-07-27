@@ -1,4 +1,4 @@
-.navbar {
+.navbarContainer {
   background-color: #F8EDE3;
   position: fixed;
   width: 100%;
@@ -38,4 +38,19 @@
 /* Change color by location */
 .fillSVG {
   fill: #000;
+}
+
+
+/* MEDIA QUERIES */
+
+@media (min-width: 800px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbarContainer {
+    width: 35%;
+    border-radius: 1em;
+  }
 }

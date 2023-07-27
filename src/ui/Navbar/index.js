@@ -37,22 +37,24 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <ul>
-        {routes.map(route => {
-          return (
-            <li key={route.to}>
-              <button
-                className='navbarButton'
-                onClick={() => handleScrollToTop(route.to)}
-              >
-                <NavLink to={route.to}>
-                  {route.component}
-                </NavLink>
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="navbarContainer">
+        <ul>
+          {routes.map(route => {
+            return (
+              <li key={route.to}>
+                <button
+                  className='navbarButton'
+                  onClick={() => handleScrollToTop(route.to)}
+                >
+                  <NavLink to={route.to}>
+                    {route.component}
+                  </NavLink>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </nav>
   );
 }
