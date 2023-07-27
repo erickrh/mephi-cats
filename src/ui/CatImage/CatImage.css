@@ -61,4 +61,17 @@ img {
   li {
     margin-bottom: 0;
   }
+
+  img:hover {
+    animation: smallerImg 0.1s linear normal forwards;
+  }
+
+  @keyframes smallerImg {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(0.97);
+    }
+  }
 }
