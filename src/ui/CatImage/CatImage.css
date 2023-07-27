@@ -54,3 +54,11 @@ img {
     height: 100%;
   }
 }
+
+/* MEDIA QUERIES */
+
+@media (min-width: 800px) {
+  li {
+    margin-bottom: 0;
+  }
+}

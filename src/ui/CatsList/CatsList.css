@@ -12,5 +12,8 @@ ul {
   .catListGridContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 0.5em;
+    padding: 2em 4em;
+    cursor: pointer;
   }
 }

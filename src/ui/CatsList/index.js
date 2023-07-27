@@ -11,7 +11,6 @@ function CatsList(props) {
 
   if (props.title === 'Random Cats') listChosen = newList;
   else listChosen = props.data;
-  console.log(props.data);
 
   return (
     <>
